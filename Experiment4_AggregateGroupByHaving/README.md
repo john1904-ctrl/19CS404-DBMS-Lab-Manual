@@ -38,123 +38,222 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
+Write a SQL query to find the total number of unique cities in the customer table?
+
+Table: customer
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+city        TEXT
+email       TEXT
+phone       INTEGER
 
 ```sql
--- Paste your SQL code below for Question 1
+SELECT COUNT(DISTINCT city) AS unique_cities
+FROM customer;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="831" height="387" alt="image" src="https://github.com/user-attachments/assets/a167bd49-5040-4745-84d3-1374f07cd5cc" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL query to find the total income of employees aged 40 or above.
+
+Table: employee
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
 
 ```sql
--- Paste your SQL code below for Question 2
+SELECT SUM(income) AS total_income
+FROM employee
+WHERE age >= 40;
+
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="827" height="391" alt="image" src="https://github.com/user-attachments/assets/01e6c29d-31a5-472b-ba4d-7475a9ecfdeb" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write a SQL query to find the shortest email address in the customer table?
+
+Table: customer
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT   
+city        TEXT
+email       TEXT
+phone       INTEGER
 
 ```sql
--- Paste your SQL code below for Question 3
+SELECT name, email, LENGTH(email) AS min_email_length
+FROM customer
+ORDER BY LENGTH(email)
+LIMIT 1;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="816" height="399" alt="image" src="https://github.com/user-attachments/assets/a3cbe7fb-5e54-47f5-81dc-7a6a1db89ad7" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+What is the count of male and female patients?
+
+Sample table: Patients Table
+
+
+
+For example:
+
+Result
+Gender      TotalPatients
+----------  -------------
+Female      5
+Male        5
+
 
 ```sql
--- Paste your SQL code below for Question 4
+SELECT Gender, COUNT(*) AS TotalPatients
+FROM Patients
+GROUP BY Gender;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="842" height="438" alt="image" src="https://github.com/user-attachments/assets/c1e45f2a-ea0e-48cc-bfd0-403712aa7a21" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+How many prescriptions were written in each frequency category (e.g., once daily, twice daily)?
+
+Sample tablePrescriptions Table
+
+
 
 ```sql
--- Paste your SQL code below for Question 5
+SELECT Frequency, COUNT(*) AS TotalPrescriptions
+FROM Prescriptions
+GROUP BY Frequency;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="823" height="596" alt="image" src="https://github.com/user-attachments/assets/26e7a133-8646-4ec5-b720-d1075cdc305c" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+How many prescriptions were written by each doctor?
+
+Sample tablePrescriptions Table
+
+
 
 ```sql
--- Paste your SQL code below for Question 6
+SELECT DoctorID, COUNT(*) AS TotalPrescriptions
+FROM Prescriptions
+GROUP BY DoctorID;
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="840" height="789" alt="image" src="https://github.com/user-attachments/assets/dbcbd08a-524a-4545-9cd1-ea645ea30634" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write the SQL query that achieves the grouping of data by city, calculates the total income for each city, and includes only those cities where the total income sum is greater than 200,000.
+
+Sample table: employee
+
 
 ```sql
--- Paste your SQL code below for Question 7
+SELECT city, SUM(income) AS Income
+FROM employee
+GROUP BY city
+HAVING SUM(income) > 200000;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="824" height="608" alt="image" src="https://github.com/user-attachments/assets/9c35ac7f-c21c-4bbc-95ed-9fe04d818147" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write the SQL query that achieves the grouping of data by occupation, calculates the minimum work hours for each occupation, and excludes occupations where the minimum work hour is not greater than 8.
+
+Sample table: employee1
+
+
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT occupation, MIN(workhour)
+FROM employee1
+GROUP BY occupation
+HAVING MIN(workhour) > 8;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="841" height="548" alt="image" src="https://github.com/user-attachments/assets/a7935d04-3a51-4977-9d4a-250b3dc03db2" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write the SQL query that achieves the grouping of data by occupation, calculates the average work hours for each occupation, and includes only those occupations where the average work hour falls between 10 and 12.
+
+Sample table: employee1
+
+
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT occupation, AVG(workhour)
+FROM employee1
+GROUP BY occupation
+HAVING AVG(workhour) BETWEEN 10 AND 12;
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="829" height="462" alt="image" src="https://github.com/user-attachments/assets/4c3d81c1-5125-4342-b075-262e214cf5e4" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write the SQL query that accomplishes the selection of total cost of all products in each category from the "products" table and includes only those products where the total cost is greater than 50.
+
+Sample table: products
+
 
 ```sql
--- Paste your SQL code below for Question 10
+SELECT category_id, SUM(price) AS Total_Cost
+FROM products
+GROUP BY category_id
+HAVING SUM(price) > 50;
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="826" height="401" alt="image" src="https://github.com/user-attachments/assets/29683af4-54ed-47b7-9868-1003a881259a" />
+
 
 
 ## RESULT
